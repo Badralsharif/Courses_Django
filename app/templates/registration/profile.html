@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %} الصفحة االشخصية   {%endblock title %}
+{% block body %}
+
+<!-- PAGE TITLE
+    ================================================== -->
+    <header class="py-5 py-md-1" style="background-image: none;">
+        <div class="container text-center py-xl-2">
+            <h1 class="display-4 fw-semi-bold mb-0">تعديل الحساب    </h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-scroll justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-gray-800" href="#">
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-800 active" aria-current="page">
+                       تعديل الحساب  
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <!-- Img -->
+        <img class="d-none img-fluid" src="...html" alt="...">
+    </header>
+      {% include  'Components/msg.html' %} 
+    <!-- Card -->
+            <div class="card" style="width:80%;margin-left:10%;">
+              <div class="card-body" >
+             
+                <form method = 'post' action="{% url 'app:profile_update' %}">
+                    {% csrf_token %}
+                  <div class="row">
+                        <div class="col">
+                            <div class="form-group mb-4">
+                              <label>الاسم الاخير</label>
+                              <input type="text" class="form-control" placeholder="الاسم الاخير" name="last_name" value='{{user.last_name}}'>
+                            </div>
+                        </div>
+                         <div class="col">
+                            <div class="form-group mb-4">
+                              <label>الاسم الاول</label>
+                             <input type="text" class="form-control"  placeholder="الاسم الاول" name="first_name" value='{{user.first_name}}'>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                             <div class="form-group mb-4">
+                                <label>البريد الالكتروني </label>
+                                <input type="email" class="form-control" placeholder="البريد الالكتروني" name="email" value='{{user.email}}' readonly>
+                             </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-4">
+                               <label>اسم المستخدم</label>
+                               <input type="text" class="form-control" placeholder="اسم المستخدم " name="username"  value='{{user.username}}' readonly>
+                            </div>
+                        </div>
+                      <div class="col-12">
+                            <div class="form-group mb-4">
+                               <label>كلمة المرور</label>
+                               <input type="password" class="form-control" placeholder="كلمة المرور" name="password" value='{{user.password}}'>
+                            </div>
+                        </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">   تعديل الحساب </button>
+                </form>
+
+              </div>
+            </div>
+{% endblock %}
